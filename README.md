@@ -2,12 +2,12 @@
 
 ## Features
 
-- Calculates distance between current location and the person in the screen
+- Calculates close distance between one point to another.
 
 ## Why did I decide to build this app?
 
 Love to play baseball and saw people are having hard time to calculate distance from home plate to other points (e.g, mound, each base, etc.) without measuring device.
-I thought it will be nice if I can build an app that calculates distance automatically by detecting person inside a screen, incorporates with location services.
+I thought it will be nice if I can build an app that calculates close distance automatically incorporates with location services.
 
 ## Available Scripts
 
