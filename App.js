@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { StyleSheet, View, Button } from "react-native";
 import { Location, Permissions } from "expo";
 
+import Calculation from "./Calculation";
+
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       startLocation: null,
@@ -46,12 +48,10 @@ class App extends Component {
           onPress={() => this.getEndLocationAsync()}
           title="Record Destination Point"
         />
-        {this.getStartLocationAsync
-          ? console.log("This is start location:", this.state.startLocation)
-          : null}
-        {this.getEndLocationAsync
-          ? console.log("This is end location:", this.state.endLocation)
-          : null}
+        <Calculation
+          startCoord={this.state.startLocation}
+          endCoord={this.state.endLocation}
+        />
       </View>
     );
   }
