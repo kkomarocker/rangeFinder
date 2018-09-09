@@ -7,34 +7,51 @@ class App extends Component {
     super();
 
     this.state = {
-      location: null,
+      startLocation: null,
+      endLocation: null,
       errorMsg: null
     };
   }
 
-  getLocationAsync = async () => {
+  getStartLocationAsync = async () => {
     let status = Permissions.askAsync(Permissions.LOCATION);
 
     if (status !== "granted") {
       this.setState({ errorMsg: "Location service denied" });
     }
 
-    let location = await Location.getCurrentPositionAsync({});
-    this.setState({ location });
+    let startLocation = await Location.getCurrentPositionAsync({});
+    this.setState({ startLocation });
+  };
+
+  getEndLocationAsync = async () => {
+    let status = Permissions.askAsync(Permissions.LOCATION);
+
+    if (status !== "granted") {
+      this.setState({ errorMsg: "Location service denied" });
+    }
+
+    let endLocation = await Location.getCurrentPositionAsync({});
+    this.setState({ endLocation });
   };
 
   render() {
     return (
       <View style={styles.container}>
         <Button
-          onPress={() => this.getLocationAsync()}
+          onPress={() => this.getStartLocationAsync()}
           title="Record Starting Point"
         />
         <Button
-          onPress={() => this.getLocationAsync()}
+          onPress={() => this.getEndLocationAsync()}
           title="Record Destination Point"
         />
-        {this.getLocationAsync ? console.log(this.state.location) : null}
+        {this.getStartLocationAsync
+          ? console.log("This is start location:", this.state.startLocation)
+          : null}
+        {this.getEndLocationAsync
+          ? console.log("This is end location:", this.state.endLocation)
+          : null}
       </View>
     );
   }
